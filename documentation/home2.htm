@@ -1,0 +1,79 @@
+<HTML>
+<HEAD>
+<LINK rel="stylesheet" type="text/css" href="../styles.css">
+</HEAD>
+<BODY>
+
+<P class="Title"><img src="images/Compass_w_Ladder.png">Welcome to Ladder Server</P>
+
+<P>
+Welcome to Ladder Server. 
+</P>
+
+<P>
+There are many benefits to building databases with an Object Oriented Database Management System (OODBMS) over a Flat File Database System, also known as SQL, which I would like to talk to you about them here. But before I begin, please remember that Ladder v1.00 for PHP 4, is implemented using mySQL v5.00. While this may seem like a cheat, this implementation allows the concept to be implemented with minimal cost concerning the full development of a new database engine and allows for the testing of the concept to insure that development of a standalone system will contain the proper balance of functionality, ease of use, and responsiveness.
+</P>
+<P>
+Ladder has many advantages for programmers over SQL: It embeds the knowledge of how objects or data elements are related into the database directly. The relationships of data can be easily seen through an object explorer. Ladder stores data in a fashion that mirrors Object Oriented Programming. Data can be extended without changing the Programming or Application - thus allowing older programs to continue to run while building newer applications. And, it can easily represent form data.Â  While I will talk about how these topics, I will not talk about how Ladder does this.
+</P>
+<P>
+The first version of SQL was developed at IBM by Donald D. Chamberlin and Raymond F. Boyce in the early 1970s. This version, initially called SEQUEL, was designed to manipulate and retrieve data stored in IBM's original relational database product, System R. The SQL language was later formally standardized by the American National Standards Institute (ANSI) in 1986. Subsequent versions of the SQL standard have been released as International Organization for Standardization (ISO) standards. (Wikipedia.com). As discussed in a SQL Explained in Short SQL uses for basic function calls to manipulate data: Create, Select, Update and Delete. For a full discussion of how these functions are extended and used to manipulate a full database engine please refer to a SQL manual. For the purposes of this article, we will focus solely on how SQL manages relationships between tables of data.
+</P>
+<P>
+In an object database (also object oriented database), information is represented in the form of objects as used in object-oriented programming. When database capabilities are combined with object programming language capabilities, the result is an object database management system (ODBMS). An ODBMS makes database objects appear as programming language objects in one or more object programming languages. An ODBMS extends the programming language with transparently persistent data, concurrency control, data recovery, associative queries, and other capabilities. (Wikipedia.com)
+</P>
+<P>
+The term "object-oriented database system" first appeared around 1985[citation needed]. Notable research projects included Encore-Ob/Server (Brown University), EXODUS (University of Wisconsin), IRIS (Hewlett-Packard), ODE (Bell Labs), ORION (Microelectronics and Computer Technology Corporation or MCC), Vodak (GMD-IPSI), and Zeitgeist (Texas Instruments). The ORION project had more published papers than any of the other efforts. Won Kim of MCC compiled the best of those papers in a book published by The MIT Press.[1] (Wikipedia.com)
+</P>
+<P>
+SQL creates individual tables which are linked at the row level. One row of a table, points to another row of another table. This method of relating data between tables is quite common and is seen very easily in Microsoft Excel Spreadsheets. When you create a XL Spreadsheet as a database for addresses, the first row contains the names of the fields: Name, Street, City, State, Zip and Telephone. If you were to create a 2nd Spreadsheet that contained additional information about each customer in the Address Spreadsheet, you would create a column that links the 2nd Spreadsheet to the Address Spreadsheet. In most instances this relationship can be quite intuitive. Now start building a larger information system, where the number of tables that are linked together by this method number in the 100's. Now these relationships become very hard to figure out, manage, and trace manually. And thus a lot of the information needed to traverse the database is stored in program logic, and if the program is lost, and all you have is the data, how do you migrate the data to a new system.
+</P>
+<P>
+Ladder addresses the problem of relationship linking. It places an assumption on all data that states, "All data is related by its position within the tree." Ladder is not the first to conceive of this idea, many other companies use some form of Visual Hierarchical Data Representation (or Object Model) to represent and store their data.Â  Some examples are: Email, Registries, and Contact Managers. In fact, Ladder looks very much like Windows Explorer. This similarity is done on purpose; your familiarity with the components will help you understand how Ladder can build information pools easily for you. Ladder uses the same three (3) basic constructs that Windows Explorer uses â€“ Folder, Files and Short Cuts (known as References).Â 
+</P>
+<P>
+Just as in Windows Explorer, a folder can contain a folder, a file or a reference. Folders can contain Folders and more Folders. In order to find a file on your computer, you can start from My Documents and drill down to the specific folder to retrieve that file. Or you can choose a shortcut. Information stored in this fashion is related hierarchically based on the parent child relationship.
+</P>
+<P>
+Like SQL, Ladder must perform the same 4 basic commands: Â create data, find data, update data, and delete data. How it does this though is significantly different, and will not be discussed. However, like Windows Explorer, if you delete a branch of a tree then that branch and all its data is deleted as well. You can also move branches and duplicate them. This is no easy trick for a SQL database which can duplicate data on a per row basis, but not as a whole, and not without a lot of business logic being retained by the SQL Server to do so.
+</P>
+<P>
+Above we discussed a simple application of an Address Contact Manager. In that application we had two tables which held a relationship between each other based on a key field in the 2nd spreadsheet pointing to the address spreadsheet. If we wanted to add additional information to SQL we would have to create additional columns or new tables in order to capture that information. The problem with adding additional columns is that when a column is not used, that's wasted space. (Note though that some SQL Database Managers recognize when the field is empty, and don't store data there.)
+</P>
+<P>
+In Ladder, a Folder would be created for each Person in the Contact List. In that folder you would place their address information.Â  However, unlike SQL, Ladder allows you to continue adding other data elements into the folder. By design, Ladders allows its data to expand as needed, which gives it two (2) beneficial effects immediately. The first is that Ladder doesnâ€™t require the middle ware (program logic) to change in order to extend the data.Â  The Second is that data stored in Ladder can grow as you grow.Â  Thus, even if you used the Object Explorer to manage some of your data while another application managed another, the application would neither know nor care.
+</P>
+<P>
+Question, do you know how many forms you fill out when you enter school, or go for a routine medical exam, or open a new bank account? All of these forms all request pretty much the same contact information - name, address, city, state, zip, telephone, and now email. Beyond that, these forms become specific to the company or agency that you are filling them out for. The primary reason why Form Data stays on paper is because of the cost to transfer it to an electronic format.Â  If itâ€™s not building the application, itâ€™s doing the data entry.Â  While Ladder canâ€™t reduce the cost of data entry, Ladder can allow you to build applications quickly that can capture this information easily.
+</P>
+<P>
+Each form is represented as a Folder in Ladder. Each form can be broken down into sub components: Name, Address, Contact Information, Bank Account, Medical History, .... Each component can be represented through folder and items. If the form needs to reference another form, then a short cut (or reference) can be placed in the folder for that forms data. Since the reference points directly to another form (folder) we can visually see what that data looks like without much help from the application.
+</P>
+<P>
+So how does this help the developer of a website, medical application (EMR), accounting application, customer relationship management system (CRM) or an enterprise relationship management system (ERM)? All these systems are now created using an Object Oriented Language. PHP and ASP for the web servers. C# and Java for applications. Objects in these languages all have one thing in common - their relationship to the parent. When you look at an object map for an Object Oriented Program it looks exactly like the map for Ladder. You have a Parent Object that contains children, and those children contain more children. Until you reach the very bottom where you find that the child contains data. And if you look at the form above, you'll notice that the Form has the same construct as the object. Ladder allows the programmer to use the same construct from beginning to end of his project, reducing development time and costs.
+</P>
+<P>
+Several features not available in Ladder 1.0 for PHP 4 are: Object Modeling, Sub Classing, Object Overloading and Triggering.Â  Triggering you may know from the SQL world causes a SQL Script to be executed when a row of data or a data element is changed. The same can happen in Ladder (the full blown version). Object Modeling allows the designer to state what classes are allowed in a Class that is a Sub Class of a Folder.Â  This prevents data from other classes from entering a folder, in addition, it also helps the Object Modeler narrow down the expected list of classes that would makes sense in a particular folder. Sub Classing allows you to create a class that has the properties of a previous class, and allows you to extend or redact its Object Model.Â  And Object Overloading allows you to change the properties of specific instances of a class. This is useful when building new applications that are using old data and adding its data into the object tree.Â  While you may not want to recreate the whole tree just to add new data types, this method allows you to say, this folder can now accept information as defined by this class.
+</P>
+<P>
+The final piece of the puzzle is browsing Ladder. While many application developers will build specific applications to account for the specific workflow in your organization, the general method is through an Object Browser. An Object Browser queries Ladder to create a tree similar to that of Windows Explorer, and also queries Ladder so that it knows what type of object itâ€™s looking at. This information allows the Object Browser to visually represent data based on which class or overloaded class you need to see it from. You can look at the elements in their native format or you can view them as forms.Â  And since several different forms could be applied to the same folder, you can choose between which forms you want to view.
+</P>
+<P>
+Thus we have covered the primary reasons why Ladder over mySQL is a superior product to just mySQL alone.Â  Ladder embeds the knowledge of how objects are linked as an inherent part of its structure.Â  Ladder allows you to see these relationships easily through its Object Browser.Â  Data stored in Ladder looks the same as the Programmers Object Model.Â  Data in Ladder can be extended easily to meet ever changing corporate needs.Â  Ladder can easily represent form data. And Ladder uses readily understood concepts to represent and store its data.
+</P>
+
+<div class="float-bottom">
+<P class="copyright">
+/*	=======================================<BR>
+	Copyright 1998 - 2013 - E Net Arch<BR>
+		www.ENetArch.net - 248-686-1407<BR>
+		ENetArch on AIM, Yahoo, and Skype<BR>
+<BR>
+	This program is distributed under the terms of the GNU <BR>
+	General Public License (or the Lesser GPL).<BR>
+	======================================= */
+</P> 
+</div>
+
+</BODY>
+</HTML>

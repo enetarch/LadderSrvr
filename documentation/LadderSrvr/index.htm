@@ -1,0 +1,206 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+<LINK rel="stylesheet" type="text/css" href="../styles.css">
+</HEAD>
+<BODY>
+
+
+<P class="Title">Ladder Server</P>
+
+<P>	
+	<a href="#Description">Description</a> | 
+	<a href="#JSONFormats">JSON IO Formats</a> | 
+	<a href="#Commands">Commands</a> | 
+	<a href="#Comments">Comments</a> | 
+</P>
+
+<P  id="Description" class="Header1">Description</P>
+<P>Ladder Server uses JSON through tree.php to execute commands. </P>
+<P><blockquote>http://192.168.0.250/LadderSrvr/tree.php</blockquote></P>
+
+<P>Ladder Server expects the commands to come through POST, thus trying to 
+execute commands through GET will, of course, fail. </P>
+
+<P>Ladder Server is not meant to be a standalone product.  Coming soon are
+a Client Interface Library and Web Based Client Interface to explore the Ladder Tree.</P>
+
+<P>For those that are interested in jumping the gun, there is a version of Ladder's Web Based
+Client <a href="http://www.phpclasses.org/package/6371-PHP-Display-a-collapsible-tree-of-links.html">here</a>. 
+It will require some adjustments to work with Ladder Server.</P>
+
+
+<P id="JSONFormats" class="Header1">JSON IO Formats</P>
+<P>Commands sent to Ladder Server are composed using a JSON name value array format:</P>
+<P>
+<blockquote>
+<pre>
+array
+(
+	"command" : "[ see commands belows ]", 
+	"params" : Array ( [ Parameters ] ),
+	"verbose" : "[ Boolean ]", 
+)
+</pre>
+</blockquote>
+</P>
+<P> Verbose - [ True | False ] - Ladder Server can </P>
+<P>Ladder Server responses use the following JSON name value array format:</P>
+<p>
+<blockquote>
+<pre>
+Array 
+(
+	"return" : [ Boolean | Array () ],
+	"error" : Array (),
+);
+</pre>
+</blockquote>
+</p>
+
+<P id="Commands" class="Header1">Commands</P>
+<P>
+	<a href="#Commands_Ladder">Ladder</a> | 
+	<a href="#Commands_Folder">Folder</a> | 
+	<a href="#Commands_Item">Item</a> | 
+	<a href="#Commands_Property">Property</a> | 
+</P>
+
+<P>Below are the commands for Ladder Server.  Each command contains is a word pair 
+[Class colon (:) Method]. If the command has parameters, those will follow in parenthesis "()".
+The parameters are explained by browsing to the specific method in the correct class, 
+in the Ladder Library. </P>
+
+<!-- ========================================== -->
+<p id="Commands_Ladder" class="Header2">Ladder Commands</p>
+
+<P><a href="../Ladder/version.htm">Ladder:Version</a> - return the version Ladder being used.</P>
+<P><a href="../Ladder/isInstalled.htm">Ladder:isInstalled</a> - returns whether or not Ladder is installed into the data store</P>
+<P><a href="../Ladder/install.htm">Ladder:Install</a> - install Ladder into the data store</P>
+<P><a href="../Ladder/uninstall.htm">Ladder:unInstall</a> - uninstall Ladder from the data store</P>
+	
+	========================================
+	
+<P><a href="../Ladder/getItem.htm">Ladder:getItem</a> (nID) - return the element from Ladder with the given ID</P>
+<P><a href="../Ladder/getRoots.htm">Ladder:getRoots</a> - return a list of IDs that point to the Roots in Ladder's Tree</P>
+
+	========================================
+
+<P><a href="../Ladder/createClass.htm">Ladder:create_Class</a> (thsName, nBaseType, ofClass, bAcceptsAll, szStr) - 
+Adds a new class to Ladder, and stores the information in the Root Classes Folder.</P>
+
+	========================================
+
+<P><a href="../Ladder/getClasses.htm">Ladder:getClasses</a> - Returns the Classes Folder from the Ladder.</P>
+<P><a href="../Ladder/getClass.htm">Ladder:getClass</a> (szName, nClass) - returns the requested class by ID</P>
+	
+<!-- ========================================== -->
+<p id="Commands_Folder" class="Header2">Folder Commands</p>
+	
+<P><a href="../Ladder/Folder/Count.htm">Folder:Count</a> ( szName, aryClasses, nBaseType ) - 
+ returns the number of items and folder in this folder</P>
+ 
+<P><a href="../Ladder/Folder/Item.htm">Folder:Item</a>  ( nPos, aryClasses, nBaseType ) - 
+returns a list of IDs for elements found in the current folder matching the parameter criteria.</P>
+
+<P><a href="../Ladder/Folder/Delete.htm">Folder:Delete</a> - 
+removes the Folder and it's contents from the Ladder.</P>
+
+<P><a href="../Ladder/Folder/getChildren.htm">Folder:getChildren</a> ( szName, aryClasses, nBaseType, nOrderBy, bASC) - 
+returns an array of Property states for all elements found in the current folder matching the parameter criteria.</P>
+
+<P><a href="../Ladder/Folder/Exists.htm">Folder:Exists</a>  ( szName, aryClasses, nBaseType )  - 
+returns True or False, if the Folder, Data Item, or Reference are found in this folder</P>
+
+	========================================
+
+<P><a href="../Ladder/Folder/getFolders.htm">Folder:getFolders</a>  ( szName, aryClasses, nBaseType, nOrderBy, bASC ) - 
+returns an array of Property states for all matching Folder in the current folder.</P>
+
+<P><a href="../Ladder/Folder/getItems.htm">Folder:getItems</a>  ( szName, aryClasses, nBaseType, nOrderBy, bASC ) - 
+returns an array of Property states for all matching Datat Items in the current folder.</P>
+
+<P><a href="../Ladder/Folder/getReferences.htm">Folder:getReferences</a>  ( szName, aryClasses, nBaseType, nOrderBy, bASC ) - 
+returns an array of Property states for all matching References in the current folder.</P>
+	
+	========================================
+
+<P><a href="../Ladder/Folder/getFolder.htm">Folder:getFolder</a> ( szName, nClass ) - 
+Searches the current folder for all the Folder Links that consider this folder to be it's parent.</P>
+
+<P><a href="../Ladder/Folder/getItem.htm">Folder:getItem</a> ( szName, nClass ) - 
+This retrieves a specific Data Item from the folder and returns an Data Item instance</P>
+
+<P><a href="../Ladder/Folder/getReference.htm">Folder:getReference</a> ( szName, nClass ) - 
+Searches the current folder for a Reference specified by the Name and Class</P>
+	
+	========================================
+	
+<P><a href="../Ladder/Folder/Create.htm">Folder:Create_Folder</a> ( szName, szDescription, nClass) - 
+Add a new instances of Folder to the current folder. </P>
+
+<P><a href="../Ladder/Folder/Create.htm">Folder:Create_Item</a> ( szName, szDescription, nClass )- 
+Add a new instances of Data Item to the current folder.  Note, when a Data Element is returned, the JSON object
+looks as follows:</P>
+
+<P>
+<blockquote>
+<pre>
+Array 
+(
+	"return" : Array 
+	(
+		"State" : Array (),
+		"Data" : Array (),
+	),
+	"error" : Array (),
+);
+</pre>
+</blockquote>
+</P>
+
+<P><a href="../Ladder/Folder/Create.htm">Folder:Create_Reference</a> ( szName, szDescription, nClass, Folder) - 
+ Add a new instances of Reference to the current folder. </P>
+	
+<!-- ========================================== -->
+<p id="Commands_Item" class="Header2">Item Commands</p>
+
+<P><a href="../Ladder/Item/Delete.htm">Item:Delete</a> - removes the Item and it's 
+Data from the Ladder.</P>
+
+<P><a href="../Ladder/Item/getData.htm">Item:getData</a> - returns the data 
+stored in the secondary tables pointed to by the Ladder Link object and class information.</P>
+
+<P><a href="../Ladder/updateItem.htm">Item:saveData</a> ( thsState, thsData) - 
+stores the state of a data element and its respective object state in Ladder. </P>
+	
+<!-- ========================================== -->
+<p id="Commands_Property" class="Header2">Property Commands</p>
+	
+<P><a href="../Ladder/updateLink.htm">Properties:Store</a> ( thsState ) - 
+stores the state of an element in Ladder. </P>
+
+</P>
+
+
+<P id="Comments" class="Header1">Comments</P>
+<P>This version of Ladder is a prototype whose sole purpose is to demonstrate the concept, 
+functionality and possible uses.  Future versions of Ladder Server may not rely on a Web Server,
+3rd party language, or a SQL Database Server.  Development is underway to make Ladder Server 
+a full fledge stand-alone product.
+</P>
+
+
+<P class="copyright">
+/*	=======================================<BR>
+	Copyright 1998 - 2013 - E Net Arch<BR>
+		www.ENetArch.net - 248-686-1407<BR>
+		ENetArch on AIM, Yahoo, and Skype<BR>
+<BR>
+	This program is distributed under the terms of the GNU <BR>
+	General Public License (or the Lesser GPL).<BR>
+	======================================= */
+</P> 
+
+</BODY>
+</HTML>

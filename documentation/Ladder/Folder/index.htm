@@ -1,0 +1,88 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+	<HEAD>
+<LINK rel="stylesheet" type="text/css" href="../../styles.css">
+</HEAD>
+<BODY>
+
+<P class="Title">Class :  Folder</P>
+
+<p><a href="index.htm">Collection</a> | 
+<a href="#Extends">Extends</a> | 
+<a href="#Constants">Constants</a> | 
+<a href="#UsageConcepts">Usage Concepts</a> | 
+<a href="#Properties">Methods</a> | 
+<a href="#Errors">Errors</a> | 
+<a href="#Examples">Examples</a> | 
+<a href="#SeeAlso">See Also</a> | 
+</p>
+
+<P id="Extends" class="Header1">Extends</P>
+<P><a href="../Properties/index.htm">Properties</a></P>
+
+<P class="Header1">Heirarchy</P>
+<P>Folder<BR>
+<IMG src="../..\images\t-tb-r.gif" > Folder (s)<BR>
+<IMG src="../..\images\tb-r.gif" > Item (s)<BR>
+<IMG src="../..\images\t-r.gif" > Reference (s)</P>
+
+<P id="Description" class="Header1">Description</P>
+<P>Folder is the primary container for all items stored in Ladder.  As the structure
+of Ladder is based on a directory structure, folders and subfolders organize the relationships
+between objects.  This structure mirrors the structure of an Object Oriented environment.</P>
+
+<P id="Methods" class="Header1">Methods</P>
+<p>
+Public <A href="Create.htm">Create Folder</A> ( Folder, szName, szDescription, nClass) : Folder<BR>
+Public <A href="Create.htm">Create Item</A> ( Folder, szName, szDescription, nClass, Structure) : Item<BR> 
+Public <A href="Create.htm">Create Reference</A> ( Folder, szName, szDescription, nClass, Folder) : Reference<BR> 
+<BR> 
+
+Public <A href="Delete.htm">Delete</A> ( [Folder | Item]) : Boolean<BR> 
+<BR> 
+
+Public <A href="Count.htm">Count</A> ( szName, aryClasses, nBaseType ) : Long<BR> 
+Public <A href="Item.htm">Item</A> ( nPos, aryClasses, nBaseType) : Ladder Links<BR> 
+<BR> 
+
+Public <A href="Exists.htm">Exists</A> ( szName, aryClasses, nBaseType ) : Boolean<BR> 
+<BR> 
+
+Public <A href="getChildren.htm">getChildren</A> ( szName, aryClasses, nBaseType, nOrderBy, bASC ) : Links<BR> 
+<BR> 
+
+Public <A href="getFolders.htm">getFolders</A> ( szName, aryClasses, nBaseType, nOrderBy, bASC  ) : Folders<BR> 
+Public <A href="getItems.htm">getItems</A> ( szName, aryClasses, nBaseType, nOrderBy, bASC  ) : Items<BR> 
+Public <A href="getReferences.htm">getReferences</A> ( szName, aryClasses, nBaseType, nOrderBy, bASC  ) : References<BR> 
+<BR> 
+
+Public <A href="getFolder.htm">getFolder</A> ( szName, nClass) : Folder<BR> 
+Public <A href="getItem.htm">getItem</A> ( szName, nClass) : Item<BR> 
+Public <A href="getReference.htm">getReference</A> ( szName, nClass) : Reference<BR> 
+<BR> 
+
+Public <A href="Move.htm">Move</A> ( Folder ) : Boolean<BR> 
+Public <A href="Copy.htm">Copy</A> ( Folder ) : Boolean<BR> 
+Public <A href="Duplicate.htm">Duplicate</A> ( Folder ) : Boolean<BR> 
+</p>
+
+<P id="Remarks" class="Header1">Remarks</P>
+<P></P>
+
+<P id="Remarks" class="Header1">Examples</P>
+<P></P>
+ 
+ 
+ <P class="copyright">
+/*	=======================================<BR>
+	Copyright 1998 - 2014 - E Net Arch<BR>
+		www.ENetArch.net - 248-686-1407<BR>
+		ENetArch on AIM, Yahoo, and Skype<BR>
+<BR>
+	This program is distributed under the terms of the GNU <BR>
+	General Public License (or the Lesser GPL).<BR>
+	======================================= */
+</P> 
+
+</BODY>
+</HTML>

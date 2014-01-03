@@ -1,0 +1,53 @@
+<HTML>
+<HEAD>
+<TITLE></TITLE>
+<LINK rel="stylesheet" type="text/css" href="../styles.css">
+</HEAD>
+<BODY>
+<P class="Title">Method : CreateTable</P>
+
+<P>
+	<a href="#Syntax">Syntax</a> | 
+ <a href="#Description">Description</a> | 
+ <a href="#Parameters">Parameters</a> | 
+<a href="#Values">Values</a> | 
+<a href="#Returns">Returns</a> | 
+<a href="#Remarks">Remarks</a> | 
+ <a href="#Example">Example</a> | 
+  <a href="#SeeAlso">See Also</a> | 
+</p>
+
+<P id="Syntax" class="Header1">Syntax</P>
+<P>Private CreateTable (szName, szStructure) : Boolean</P> 
+ 
+<P id="Description" class="Header1">Description</P>
+<P>Adds a table to the Ladder data store (mySQL).</P>
+
+<P id="Parameters" class="Header1">Parameters</P>
+<P>[ szName ] - the name table to be created.</P>
+<P>[ szStructure ] - the structure of the table to be created.</P>
+
+<P id="Returns" class="Header1">Returns</P>
+<P>[ Boolean] - True or False on the successful creation of the table.</P>
+
+<P id="Remarks" class="Header1">Remarks</P>
+<p>the structure of a table should NOT include the create table keyboards needed by
+mySQL.  Instead only the actual structure needed to maintain the objects instance 
+data should be provided. </p>
+<p>Additionally, each table created should not include an ID field.  Ladder automatically
+prepends this to your table, and uses it to maintain the relationships between the instance
+data and Ladder's Link table.</p>
+
+<P class="copyright">
+/*	=======================================<BR>
+	Copyright 1998 - 2014 - E Net Arch<BR>
+		www.ENetArch.net - 248-686-1407<BR>
+		ENetArch on AIM, Yahoo, and Skype<BR>
+<BR>
+	This program is distributed under the terms of the GNU <BR>
+	General Public License (or the Lesser GPL).<BR>
+	======================================= */
+</P> 
+
+</BODY>
+</HTML>

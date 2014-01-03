@@ -1,0 +1,74 @@
+<HTML>
+<HEAD>
+<TITLE></TITLE>
+<LINK rel="stylesheet" type="text/css" href="../../styles.css">
+</HEAD>
+<BODY>
+
+<P class="Title">Method : Create</P>
+
+<P>
+	<a href="#Syntax">Syntax</a> | 
+ <a href="#Description">Description</a> | 
+ <a href="#Parameters">Parameters</a> | 
+<a href="#Values">Values</a> | 
+<a href="#Returns">Returns</a> | 
+<a href="#Remarks">Remarks</a> | 
+ <a href="#Example">Example</a> | 
+  <a href="#SeeAlso">See Also</a> | 
+</p>
+
+<P id="Syntax" class="Header1">Syntax</P>
+<P>
+Public Create ( Folder, szName, szDescription, nClass) : Boolean<BR>
+<BR>
+
+Public Create_Folder ( szName, szDescription, nClass) : Folder<BR> 
+Public Create_Item ( szName, szDescription, nClass) : Item<BR> 
+Private Create_Item2 ( szName, szDescription, nClass, szTableName) : Item<BR> 
+Public Create_Reference ( szName, szDescription, nClass, Folder) : Reference<BR> 
+</P>
+
+<P id="Description" class="Header1">Description</P>
+<P>Create initalizes a folder object to the instance data passed in through the parameters.  
+The object will not be stored until STORE is called.  That is when the ID initialized.</P>
+
+<P>Create Folder, Item, and Reference, add a new instances of Folder, Data Item, or 
+Reference to the current folder.  These instances will not be saved to Ladder's store until
+STORE is called.</P>
+
+<P id="Parameters" class="Header1">Parameters</P>
+<P>[ Folder ] - the parent link, unless this instance will be a root folder.</P>
+<P>[ szName ] - The name of the folder to be created.</P>
+<P>[ szDescription ] - The description of the folders contents</P>
+<P>[ nClass ] - The class of the folder, item or reference.</P>
+<P>[ szTableName ] - This SQL table used by this Data Item.</P>
+
+<P id="Returns" class="Header1">Returns</P>
+<P>The container class returns an instance of the Folder, Data Item or Reference used to manage the data.</P>
+
+<P id="Remarks" class="Header1">Remarks</P>
+<P>The process of storing data in Ladder starts with creating an instances and storing in.  These are 
+two seperate commands - Create and Store.  This is done on purpose to avoid unnecessary transactions
+between the library and the storage engine.</P>
+
+<P id="SeeAlso" class="Header1">See Also</P>
+<P>
+	<A href="../Properties/Store.htm">Store</A><br>
+</P>
+
+<P class="copyright">
+/*	=======================================<BR>
+	Copyright 1998 - 2014 - E Net Arch<BR>
+		www.ENetArch.net - 248-686-1407<BR>
+		ENetArch on AIM, Yahoo, and Skype<BR>
+<BR>
+	This program is distributed under the terms of the GNU <BR>
+	General Public License (or the Lesser GPL).<BR>
+	======================================= */
+</P> 
+
+
+
+</BODY>
+</HTML>

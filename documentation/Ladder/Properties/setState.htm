@@ -1,0 +1,119 @@
+<HTML>
+<HEAD>
+<TITLE></TITLE>
+<LINK rel="stylesheet" type="text/css" href="../../styles.css">
+</HEAD>
+<BODY>
+<P class="Title">Method : setState</P>
+
+<P>
+	<a href="#Syntax">Syntax</a> | 
+	<a href="#Description">Description</a> | 
+	<a href="#Parameters">Parameters</a> | 
+	<a href="#Returns">Returns</a> | 
+	<a href="#Remarks">Remarks</a> | 
+	<a href="#Example">Example</a> | 
+	<a href="#SeeAlso">See Also</a> 
+</P>
+
+<P id="Syntax" class="Header1">Syntax</P>
+<P>Public setState ( Array ) : Boolean</P>
+
+<P id="Description" class="Header1">Description</P>
+<P>This initializes the instance with the information passed in through the array.</P>
+
+<P id="Parameters" class="Header1">Parameters</P>
+<P>Array - contains the state of the Link Instance.</P>
+
+<P id="Returns" class="Header1">Returns</P>
+<P>[ True | False ] depending on whether or not the instance was successful in initializing it's 
+state.</P>
+
+<P id="Remarks" class="Header1">Remarks</P>
+<P>Set State initializes the Link Instance, without knowing where the state came 
+from. This fucntion is called by the container when the user tells the 
+Container to retrieve an instance.</P>
+
+<P id="Example" class="Header1">Example</P>
+<p>A good example of where set state is used is in initializing a Class.  The logic here could be
+extended to validate the data for class type constraints, base type constraints, and parental 
+constraints. (For example, each class has to be a parent of the Root Classes Folder.)
+
+<blockquote>
+<pre class="codesSegment">
+Function getItem ($nID)
+{
+	$szSQL =
+		" SELECT * " .
+		" FROM "  . ENetArch_Ladder::cTableName() .
+		" WHERE " .
+			" ID = " . $nID;
+	
+	if ($this->cn == null) 
+		print ("CN == NULL, object = " . $this->ID() . " - " . $this->Name() . "&lt;BR&gt;");
+		
+	$rs = mysql_query ($szSQL, $this->cn);
+	If (mysql_errno ($this->cn) != 0) 
+		print (mysql_error ($this->cn) . "&lt;P&gt;");
+
+	$rowCount = mysql_num_rows ($rs);
+
+	$objItem = null;
+
+	if ($rowCount > 0) 
+	{
+		$row = mysql_fetch_row($rs);
+
+		switch ($row [4])
+		{
+			case ENetArch_Ladder_Globals::cisRoot() :
+			{ $objItem = new ENetArch_Ladder_Folder ();
+			} break;
+
+			case ENetArch_Ladder_Globals::cisFolder() :
+			{ $objItem = new ENetArch_Ladder_Folder ();
+			} break;
+
+			case ENetArch_Ladder_Globals::cisItem() :
+			{ $objItem = new ENetArch_Ladder_Item ();
+			} break;
+
+			case ENetArch_Ladder_Globals::cisReference() :
+			{ $objItem = new ENetArch_Ladder_Reference ();
+			} break;
+		}
+
+		if ($objItem != null)
+		{
+			$objItem->Connect ($this->cn);
+			$objItem->setState ($row);
+		}
+	}
+
+	mysql_free_result($rs);
+	
+	return ($objItem);
+}		
+</pre>
+</blockquote>
+
+</p>
+
+<P id="SeeAlso" class="Header1">See Also</P>
+<p>
+<a href="getState.htm">getState</a> <BR>
+</p>
+
+<P class="copyright">
+/*	=======================================<BR>
+	Copyright 1998 - 2014 - E Net Arch<BR>
+		www.ENetArch.net - 248-686-1407<BR>
+		ENetArch on AIM, Yahoo, and Skype<BR>
+<BR>
+	This program is distributed under the terms of the GNU <BR>
+	General Public License (or the Lesser GPL).<BR>
+	======================================= */
+</P> 
+
+</BODY>
+</HTML>

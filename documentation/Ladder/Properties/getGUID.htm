@@ -1,0 +1,67 @@
+<HTML>
+<HEAD>
+<TITLE></TITLE>
+<LINK rel="stylesheet" type="text/css" href="../../styles.css">
+</HEAD>
+<BODY>
+<P class="Title">Property : GUID</P>
+
+<p>	
+	<a href="index.htm">Collection</a> | 
+	<a href="#Syntax">Syntax</a> | 
+	<a href="#Description">Description</a> | 
+	<a href="#Values">Values</a> | 
+	<a href="#Returns">Returns</a> | 
+	<a href="#Remarks">Remarks</a> | 
+	<a href="#UsageConcepts">Usage Concepts</a> | 
+	<a href="#SeeAlso">See Also</a>
+</P>
+
+<P id="Syntax" class="Header1">Syntax</P></p>
+<P>
+	Public GUID : String<BR>
+	Friend GUID = String
+</P>
+
+<P id="Description" class="Header1">Description</P>
+<P>A read only value to non-Friend classes, that returns a GUID assigned to the instance from the 
+container class.</P>
+
+<P id="Values" class="Header1">Values</P>
+<P>set GUID assigns a unique String value to this Link instance.</P>
+
+<P id="Returns" class="Header1">Returns</P>
+<P>get GUID returns a String assigned by the container class to this Link instance</P>
+
+<P id="Remarks" class="Header1">Remarks</P>
+<P>The GUID is not implemented in this version of Ladder.  When implemented, it will allow
+data between trees to be shared without crashing IDs.   In addition, Reference objects will 
+associate to the GUID vs the ID. Presently, the ID of a Link instance can change between trees.  </P>
+
+<P>The advantage of switching to GUIDs, is that it speeds data synchronization between mobile 
+devices, as well as allows synchronization between multiple servers.</P>
+
+<p>Note: Some elements within Ladder, like Articles, may embedded GUIDs into their data. While
+Ladder can see and insure that Folder pointed to by Reference Objects are transfered if needed, it 
+cannot see into other class values to determine if GUIDs are being used there, and cannot insure 
+that their associated data will be available when synchronized. </p>
+
+<P id="See Also" class="Header1">See Also</p>
+<P>
+	<a href="getID.htm">ID</a> <BR>
+</P>
+
+<P class="copyright">
+/*	=======================================<BR>
+	Copyright 1998 - 2014 - E Net Arch<BR>
+		www.ENetArch.net - 248-686-1407<BR>
+		ENetArch on AIM, Yahoo, and Skype<BR>
+<BR>
+	This program is distributed under the terms of the GNU <BR>
+	General Public License (or the Lesser GPL).<BR>
+	======================================= */
+</P> 
+
+
+</BODY>
+</HTML>

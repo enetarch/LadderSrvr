@@ -1,0 +1,81 @@
+<HTML>
+<HEAD>
+<TITLE></TITLE>
+<LINK rel="stylesheet" type="text/css" href="../../styles.css">
+</HEAD>
+<BODY>
+<P class="Title">Method : getState</P>
+
+<P>
+	<a href="#Syntax">Syntax</a> | 
+	<a href="#Description">Description</a> | 
+	<a href="#Parameters">Parameters</a> |
+	<a href="#Returns">Returns</a> | 
+	<a href="#Remarks">Remarks</a> | 
+	<a href="#Example">Example</a> | 
+	 <a href="#SeeAlso">See Also</a> | 
+</p>
+
+<P id="Syntax" class="Header1">Syntax</P>
+<P>Public getState ( ) : Array</P>
+
+<P id="Description" class="Header1">Description</P>
+<P>Each Link Instance's state is transfered through get and set state.  This allows objects to
+overload each other, as new classes consume older classes.</P>
+
+<P id="Parameters" class="Header1">Parameters</P>
+<P>Array - contains the object that will take the information or state of the instance 
+and save it to the database.</P>
+
+<P id="Returns" class="Header1">Returns</P>
+<P>[ Array ] - a key value pair of fields and values stored to the database. </P>
+
+<P id="Remarks" class="Header1">Remarks</P>
+<P>While get State exposes the objects inner data, it recommended that you don't change
+these values, and simply pass them to the object being initialized.  Changing the state values
+could overwrite existing data, or perminently damage the tree.</P>
+
+<P>If it is needed, a authentication key or encryption could be employeed to safely pass the
+data to initialize super objects.</P>
+
+<P id="Example" class="Header1">Example</P>
+<p>A good example of where get state is used is in Tree.  Tree is the RPC interface through a 
+web server that allows the Ladder Client to send, retrieve, and manipulate objects in the 
+Ladder Tree.</p>
+<p>
+The logic here could be extended to validate the data for class type constraints, base type 
+constraints, and parental constraints. (For example, each class has to be a parent of the 
+Root Classes Folder.)
+
+<blockquote>
+<pre class="codesSegment">
+case "Folder:Create_Folder" :
+{
+	$objFolder = $gblLadder->getItem ($szParams[0]);
+	// Function Create_Folder ($szName, $szDescription, $nClass, $thsObject=null)
+	$thsFldr = $objFolder->Create_Folder ($szParams[1], $szParams[2], $szParams[3]);		
+	$rtn = $thsFldr->getState();
+} break;
+</pre>
+</blockquote>
+
+</p>
+
+<P id="SeeAlso" class="Header1">See Also</P>
+<p>
+<a href="setState.htm">setState</a> <BR>
+</p>
+
+<P class="copyright">
+/*	=======================================<BR>
+	Copyright 1998 - 2014 - E Net Arch<BR>
+		www.ENetArch.net - 248-686-1407<BR>
+		ENetArch on AIM, Yahoo, and Skype<BR>
+<BR>
+	This program is distributed under the terms of the GNU <BR>
+	General Public License (or the Lesser GPL).<BR>
+	======================================= */
+</P> 
+
+</BODY>
+</HTML>

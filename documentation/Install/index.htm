@@ -1,0 +1,84 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+<LINK rel="stylesheet" type="text/css" href="../styles.css">
+</HEAD>
+<BODY>
+
+
+<P class="Title">Installing Ladder Server</P>
+
+<P>	
+	<a href="#Description">Description</a> | 
+
+	<a href="#Installing">Installing</a> | 
+
+	<a href="#Comments">Comments</a> | 
+
+</P>
+
+<P  id="Description" class="Header1">Description</P>
+<P>Ladder is a data management system that uses a heirarchical structure to manage 
+ the relationships of information. Ladder works with many existing storage 
+ mediums .. from Microsoft Access to Microsoft SQL. The relationships are 
+ stored in one table as a tree, while the instance data of each class is 
+ stored in several other tables.</P>
+<P>The tree is used to store the relationships of the 
+information. As information is gathered and stored, it's relationship to 
+other informaiton can be managed by storing the relationships in a 
+folder. Instances of data can be shared amongst folders simply by 
+creating a link in the corresponding folders to the instance data.</P>
+<P>The instance data is stored in seperate tables. 
+The table name is located by reviewing the class information for the 
+instance. For example, if the informaiton stored in the instance pertained 
+to telephoen numbers, then your objects that manage telephone numbers might use 
+a table named "Telephone". They however don't have to, and thus you're 
+free to choose a table name, so long as it doesn't exist with other existing 
+tables.</P>
+
+
+<P id="Installing" class="Header1">Installing</P>
+<P>Ladder needs to know how to connect to your SQL server.  This information is stored in: <BR>
+<blockquote>LadderSrvr \ shared \ _app.php </blockquote>
+</P>
+<P>
+To confirm that Ladder Server is connecting to your SQL server, browse to the following page:
+<blockquote>http://192.168.0.250/LadderSrvr/connected.php </blockquote>
+</P>
+<P>
+Ladder Server is ready to recieve POST JSON commands through CURL calls at :
+<blockquote>http://192.168.0.250/LadderSrvr/tree.php </blockquote>
+</P>
+<P>
+The JSON commands are: 	
+<blockquote>
+	Ladder:isInstalled - are the Ladder's tables installed in the SQL server?<BR>
+	Ladder:Install - create Ladder's tables in the SQL server<BR>
+	Ladder:unInstall - remove Ladder's tables from the SQL server<BR>
+</blockquote>	
+For additional information on the POST JSON calls, look at the Ladder Client Interface Libraries. 
+Published seperately.
+</P>
+
+<P id="Comments" class="Header1">Comments</P>
+<P>This version of Ladder is a prototype whose sole purpose is to demonstrate the concept, 
+functionality and possible uses.  Future versions of Ladder Server may not rely on a Web Server,
+3rd party language, or a SQL Database Server.  Development is underway to make Ladder Server 
+a full fledge stand-alone product.
+</P>
+
+
+
+<P class="copyright">
+/*	=======================================<BR>
+	Copyright 1998 - 2013 - E Net Arch<BR>
+		www.ENetArch.net - 248-686-1407<BR>
+		ENetArch on AIM, Yahoo, and Skype<BR>
+<BR>
+	This program is distributed under the terms of the GNU <BR>
+	General Public License (or the Lesser GPL).<BR>
+	======================================= */
+</P> 
+
+</BODY>
+</HTML>

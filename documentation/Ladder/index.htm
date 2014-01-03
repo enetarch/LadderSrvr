@@ -1,0 +1,184 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+<LINK rel="stylesheet" type="text/css" href="../styles.css">
+</HEAD>
+<BODY>
+
+
+<P class="Title">Class : Ladder</P>
+
+<P>	
+	<a href="#Heirarchy">Heirarchy</a> | 
+	<A href="#Methods">Methods</a> | 
+	<a href="#Description">Description</a> | 
+	<a href="#Remarks">Remarks</a> | 
+	<a href="#Extends">Extends</a> | 
+	<a href="#XML Schema">XML Schema</a> | 
+	<a href="#Constants">Constants</a> | 
+
+	<a href="#Events">Events</a> | 
+	<a href="#Errors">Errors</a> | 
+	<a href="#Usage Concept">Usage Concept</a> | 
+	<a href="#Examples">Examples</a> | 
+</P>
+
+<P id="Heirarchy" class="Header1">Heirarchy</P>
+
+<P>
+<a href="index.htm">Ladder</a> <BR>
+<IMG src="../images/t-t-r.gif"> Roots <BR>
+<IMG src="..\images\blank.gif">
+<IMG src="..\images\t-tb-r.gif"> <a href="Folder/index.htm">Folder</a><BR>
+<IMG src="..\images\blank.gif">
+<IMG src="..\images\tb.gif">
+<IMG src="..\images\t-tb-r.gif"> <a href="Folders/index.htm">Folders</a><BR>
+<IMG src="..\images\blank.gif">
+<IMG src="..\images\tb.gif">
+<IMG src="..\images\tb-r.gif"> <a href="Items/index.htm">Items</a><BR>
+<IMG src="..\images\blank.gif">
+<IMG src="..\images\tb.gif">
+<IMG src="..\images\tb.gif">
+<IMG src="..\images\t-t-r.gif"> <a href="Item/index.htm">Item</a><BR>
+<IMG src="..\images\blank.gif">
+<IMG src="..\images\tb.gif">
+<IMG src="..\images\t-r.gif"> <a href="References/index.htm">References</a><BR>
+<IMG src="..\images\blank.gif">
+<IMG src="..\images\tb.gif">
+<IMG src="..\images\blank.gif">
+<IMG src="..\images\t-t-r.gif"> <a href="Reference/index.htm">Reference</a><BR>
+<IMG src="..\images\blank.gif">
+<IMG src="..\images\t-r.gif"> <a href="Classes/index.htm">Classes</a><BR>
+<IMG src="..\images\blank.gif">
+<IMG src="..\images\blank.gif">
+<IMG src="..\images\t-t-r.gif"> <a href="Class/index.htm">Class</a><BR>
+<IMG src="..\images\blank.gif">
+<IMG src="..\images\blank.gif">
+<IMG src="..\images\blank.gif">
+<IMG src="..\images\t-tb-r.gif"> <a href="Class_Definition/index.htm">Class Defination</a><BR>
+<IMG src="..\images\blank.gif">
+<IMG src="..\images\blank.gif">
+<IMG src="..\images\blank.gif">
+<IMG src="..\images\t-r.gif"> <a href="Templates/index.htm">Templates</a><BR>
+<IMG src="..\images\blank.gif">
+<IMG src="..\images\blank.gif">
+<IMG src="..\images\blank.gif">
+<IMG src="..\images\blank.gif">
+<IMG src="..\images\t-t-r.gif"> <a href="Template/index.htm">Template</a>
+</P>
+
+
+<P  id="Description" class="Header1">Description</P>
+<P>Ladder is a data management system that uses a heirarchical structure to manage 
+ the relationships of information. Ladder works with many existing storage 
+ mediums .. from Microsoft Access to Microsoft SQL. The relationships are 
+ stored in one table as a tree, while the instance data of each class is 
+ stored in several other tables.</P>
+<P>The tree is used to store the relationships of the 
+information. As information is gathered and stored, it's relationship to 
+other informaiton can be managed by storing the relationships in a 
+folder. Instances of data can be shared amongst folders simply by 
+creating a link in the corresponding folders to the instance data.</P>
+<P>The instance data is stored in seperate tables. 
+The table name is located by reviewing the class information for the 
+instance. For example, if the informaiton stored in the instance pertained 
+to telephoen numbers, then your objects that manage telephone numbers might use 
+a table named "Telephone". They however don't have to, and thus you're 
+free to choose a table name, so long as it doesn't exist with other existing 
+tables.</P>
+<P>The Template class manages what infomraiton can be 
+stored in a folder. This can stop unnecessary instances of data from 
+being added to a folder. Or, it can designate how many 
+instances of a particular instance can go into a folder.</P> 
+
+
+<P id="Methods" class="Header1">Methods</P> 
+<P>
+Public <A href="getError.htm">get Error</A> () : Error<BR> 
+<BR> 
+
+Public <A href="getRoots.htm">get Roots</A> (szName, nClass) : Folders<BR> 
+Public <A href="getClasses.htm">get Classes</A> () : Classes<BR> 
+<BR> 
+
+Public <A href="connect.htm" >Connect</A> ( szStore) : Boolean<BR> 
+Public <A href="disconnect.htm" >DisConnect</A> () : Boolean<BR> 
+<BR> 
+
+Public <A href="isInstalled.htm">isInstalled</A> ( ) : Boolean<BR>
+Public <A href="install.htm">Install</A> ( ) : Boolean<BR>
+Public <A href="uninstall.htm">UnInstall</A> ( ) : Boolean<BR> 
+<BR> 
+
+Private <A href="createRoots.htm">Create Roots</A> () : Boolean<BR> 
+Private <A href="installClasses.htm">Install Classes</A>  () : Boolean<BR> 
+<BR> 
+
+Public <A href="createTable.htm">Create Table</A> (thsName, szStr) : Boolean<BR> 
+<BR> 
+
+Public <A href="getItem.htm">get Item</A> (nID) : [ Folder | Item | Reference ]<BR> 
+Public <A href="getObject.htm">get Object</A> (nID, thsObject)  : [ Folder | Item | Reference ]<BR> 
+Public <A href="rootExists.htm">Root Exists</A> ( thsName, nClass) : Boolean<BR> 
+Public <A href="createClass.htm">create Class</A> (thsName, nBaseType, ofClass, bAcceptsAll, szStr) : Class_Folder<BR> 
+Public <A href="getClass.htm">get Class</A> (thsName, nClassID) : Class_Folder<BR> 
+<BR> 
+
+Private <A href="updateLink.htm">update Link</A> (thsLink) : Boolean<BR> 
+Private <A href="updateItem.htm">update Item</A> (thsLink, thsData) : Boolean<BR> 
+
+</P>
+
+<P id="Extends" class="Header1">Extends</P>
+<P id="XML Schema" class="Header1">XML Schema</P>
+
+<P>&lt;Ladder&gt;<BR>
+<IMG src="..\images\blank.gif">&lt;Folder Name="" Description="" Class=""&gt;<BR>
+<IMG src="..\images\blank.gif">
+<IMG src="..\images\blank.gif">&lt;Folder Name="" Description="" Class=""&gt; ...<BR>
+<IMG src="..\images\blank.gif">
+<IMG src="..\images\blank.gif">&lt;/Folder&gt;<BR>
+<IMG src="..\images\blank.gif">
+<IMG src="..\images\blank.gif">&lt;Item Name="" Description="" Class="" Type="[ ASCII | BINHEX ]"&gt; x00<BR>
+<IMG src="..\images\blank.gif">
+<IMG src="..\images\blank.gif">&lt;/Item&gt;<BR>
+<IMG src="..\images\blank.gif">
+<IMG src="..\images\blank.gif">...<BR>
+<IMG src="..\images\blank.gif">
+<IMG src="..\images\blank.gif">&lt;Item Name="" Description="" Class="" Type="[ ASCII | BINHEX ]"&gt; x00<BR>
+<IMG src="..\images\blank.gif">
+<IMG src="..\images\blank.gif">&lt;/Item&gt;<BR>
+<IMG src="..\images\blank.gif">&lt;/Folder&gt;<BR>
+<IMG src="..\images\blank.gif">...<BR>
+<IMG src="..\images\blank.gif">&lt;Folder Name="" Class=""&gt;<BR>
+<IMG src="..\images\blank.gif">&lt;/Folder&gt;<BR>
+ &lt;/Ladder&gt;</P>
+
+<P id="Usage Concept" class="Header1">Usage Concept</P>
+<P>Ladder as a information management system has many uses. One use is as 
+ a Daytimer. In a daytimer, information concerning the customer, their 
+ projects, the appointments, and notes are all tied together so that they are 
+ easily retrievable through many different types of sorts. You might be 
+ looking for information related to a meeting, thus knowing the date of the meeting, 
+ you can review all the notes taken on that day. Those same notes might 
+ be relevant to a project you are working on for the client. Thus the project 
+ would have a link to these notes.</P>
+<P>Ladder accomplishes this feat by removing the traditional method of referencing 
+ information and placing all the references in a ladder tree. At this point, 
+ the tree contains folders and sub folders. A Project folder could contain 
+ a link to the notes taken, todo items that were derived from that meeting, appointments 
+ for the next meeting, and so on.<BR></P> 
+
+<P class="copyright">
+/*	=======================================<BR>
+	Copyright 1998 - 2014 - E Net Arch<BR>
+		www.ENetArch.net - 248-686-1407<BR>
+		ENetArch on AIM, Yahoo, and Skype<BR>
+<BR>
+	This program is distributed under the terms of the GNU <BR>
+	General Public License (or the Lesser GPL).<BR>
+	======================================= */
+</P> 
+
+</BODY>
+</HTML>

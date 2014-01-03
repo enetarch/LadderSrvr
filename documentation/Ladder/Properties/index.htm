@@ -1,0 +1,180 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+	<HEAD>
+<LINK rel="stylesheet" type="text/css" href="../../styles.css">
+</HEAD>
+<BODY>
+
+<P class="Title">Class : Properties</P>
+
+<P>
+	<a href="#Heirarchy">Heirarchy</a> | 
+	<a href="#Description">Description</a> | 
+	<a href="#Extends">Extends</a> | 
+	<a href="#XMLSchema">XML Schema</a> | 
+	<a href="#UsageConcept">Usage Concept</a> | 
+	<a href="#Example">Example</a> | 
+	<a href="#Constants">Constants</a> | 
+	<a href="#Properties">Properties</a> | 
+	<a href="#Methods">Methods</a> | 
+	<a href="#Events">Events</a> | 
+	<a href="#Errors">Errors</a> | 
+	<a href="#Remarks">Remarks</a> | 
+</P>
+
+<P class="Header1">Heirarchy</P>
+<P>Ladder <BR>
+<IMG src="../../images/t-t-r.gif"> Roots <BR>
+<IMG src="../../images\blank.gif">
+<IMG src="../../images\t-tb-r.gif"> <a href="Folders/Folder/index.htm">Folder</a><BR>
+<IMG src="../../images\blank.gif">
+<IMG src="../../images\tb.gif">
+<IMG src="../../images\t-tb-r.gif"> <a href="Folders/index.htm">Folders</a><BR>
+<IMG src="../../images\blank.gif">
+<IMG src="../../images\tb.gif">
+<IMG src="../../images\tb-r.gif"> <a href="Items/index.htm">Items</a><BR>
+<IMG src="../../images\blank.gif">
+<IMG src="../../images\tb.gif">
+<IMG src="../../images\tb.gif">
+<IMG src="../../images\t-t-r.gif"> <a href="Items/Item/index.htm">Item</a><BR>
+<IMG src="../../images\blank.gif">
+<IMG src="../../images\tb.gif">
+<IMG src="../../images\t-r.gif"> <a href="References/index.htm">References</a><BR>
+<IMG src="../../images\blank.gif">
+<IMG src="../../images\tb.gif">
+<IMG src="../../images\blank.gif">
+<IMG src="../../images\t-t-r.gif"> <a href="Items/Reference/index.htm">Reference</a><BR>
+<IMG src="../../images\blank.gif">
+<IMG src="../../images\t-r.gif"> <a href="Classes/index.htm">Classes</a><BR>
+<IMG src="../../images\blank.gif">
+<IMG src="../../images\blank.gif">
+<IMG src="../../images\t-t-r.gif"> <a href="Classes/Class/index.htm">Class</a><BR>
+<IMG src="../../images\blank.gif">
+<IMG src="../../images\blank.gif">
+<IMG src="../../images\blank.gif">
+<IMG src="../../images\t-tb-r.gif"> <a href="Classes/Class_Definition/index.htm">Class Defination</a><BR>
+<IMG src="../../images\blank.gif">
+<IMG src="../../images\blank.gif">
+<IMG src="../../images\blank.gif">
+<IMG src="../../images\t-r.gif"> <a href="Templates/index.htm">Templates</a><BR>
+<IMG src="../../images\blank.gif">
+<IMG src="../../images\blank.gif">
+<IMG src="../../images\blank.gif">
+<IMG src="../../images\blank.gif">
+<IMG src="../../images\t-t-r.gif"> <a href="Templates/Template/index.htm">Template</a></P>
+
+
+<P id="Description" class="Header1">Description</P>
+<P>Link 
+Properties, pulls specific information from the Link Table entry and makes it publicly available. Such information as the Created, Modified, and 
+Last Accessed by Date, User and IP Address.</P>
+
+
+<P class="Header1">Properties</P>
+
+Public <A href="isFolder.htm">isFolder </A> () : Boolean <BR> 
+Public <A href="isItem.htm">isItem </A> () : Boolean<BR> 
+Public <A href="isReference.htm">isReference </A> () : Boolean<BR> 
+
+Public <A href="getID.htm">get ID </A> () : Array Long<BR> 
+Friend <A href="getID.htm">set ID </A> (ID : Long) : Boolean<BR> 
+
+Public <A href="getGUID.htm">get GUID </A> () : Array Long<BR> 
+Friend <A href="getGUID.htm">set GUID </A> (ID : Long) : Boolean<BR> 
+
+Public <A href="getName.htm">get Name</A> () : String<BR> 
+Public <A href="getName.htm">set Name</A> (szName)<BR> 
+
+Public <A href="getDescription.htm">get Description</A> () : String<BR> 
+Public <A href="getDescription.htm ">set Description</A> (szDescription)<BR> 
+
+Public <A href="getParent.htm">get Parent</A> () : Long<BR> 
+Public <A href="getParent.htm ">set Parent</A> (nID)<BR> 
+
+Public <A href="getClassID.htm">get Class</A> () : Long<BR> 
+Public <A href="getClassID.htm">ClassID</A> () : Long<BR> 
+Public <A href="getClassFolder.htm">get Class Folder</A> () : Class Folder<BR> 
+
+Public <A href="getBaseType.htm">BaseType</A> () : Long<BR> 
+
+Private <A href="getLeaf.htm">get Leaf</A> () : Long<BR> 
+Private <A href="getLeaf.htm ">set Leaf</A> (nID)<BR> 
+
+Public <A href="dateCreated.htm">Date Created </A> () : Date<BR> 
+Public <A href="dateCreated.htm">Date Accessed</A> () : Date<BR> 
+Public <A href="dateCreated.htm">Date Modified</A> () : Date<BR> 
+
+Public <A href="uidCreated.htm">UID Created</A> () : String<BR> 
+Public <A href="uidCreated.htm">UID Accessed</A> () : String<BR> 
+Public <A href="uidCreated.htm">UID Modified</A> () : String<BR> 
+
+Public <A href="ipCreated.htm">IP Created</A> () : String<BR> 
+Public <A href="ipCreated.htm">IP Accessed</A> () : String<BR> 
+Public <A href="ipCreated.htm">IP Modified</A> () : String<BR> 
+
+Public <A href="getSize.htm">Size</A> () : Long<BR> 
+</P>
+
+<P class="Header1">Methods</P>
+<P>
+Public <A href="Connect.htm">Connect</A> ( cn ) : Boolean<BR> 
+
+Public <A href="getState.htm">get State</A> ( ) : Array <BR> 
+Public <A href="setState.htm">set State</A> ( Array ) : Boolean<BR> 
+
+Public <A href="Create.htm">Create</A> (szName, szDesc, nParent, nClass, nLeaf) : Boolean<BR> 
+Public <A href="Delete.htm">Delete</A> () : Boolean<BR> 
+
+Public <A href="Store.htm">Store</A> () : Boolean<BR> 
+
+Public <A href="Path.htm">Path</A> () : Array<BR> 
+</P>
+
+
+<P id="Remarks" class="Header1">Remarks</P>
+<P>This was done to avoid 
+allowing users access to the Link Object. By making this object publicly 
+accessable, the methods used to maintain the references between links .. ie 
+their heirarchy is hidden. In this fashion, it can be updated, changed, 
+expanded, or contracted to meet the systems needs.</P>
+
+<P class="Header1">Extends / Adapts</P>
+
+<P class="Header1">Structure</P>
+
+<P class="Header1">XML Schema</P>
+
+<P>&lt;Touched 
+By&gt;<BR> &lt;Date&gt; [ccyy-mm-dd hh:mm:ss] 
+&lt;/Date&gt;<BR> &lt;UID&gt; [szString] 
+&lt;/UID&gt;<BR> &lt;IP&gt; [x00.x00.x00.x00] 
+&lt;/IP&gt;<BR>&lt;/Touched By&gt;</P>
+
+<P>&lt;Properties&gt;<BR> &lt;Created&gt; 
+&lt;Touched By&gt; .. &lt;/Touched By&gt; &lt;/Created&gt;<BR> 
+&lt;Modified&gt; &lt;Touched By&gt; .. &lt;/Touched By&gt; 
+&lt;/Created&gt;<BR> &lt;Accessed&gt; &lt;Touched By&gt; .. 
+&lt;/Touched By&gt; &lt;/Created&gt;<BR>&lt;/Properties&gt;<BR></P>
+<P class="Header1">Usage Concept</P>
+<P>Link properties are the equivelent of 
+DOS File properties. They say who did what when. Ladder was 
+setup to initially mimic the DOS file structure.</P>
+<P></P>
+
+
+
+<P class="copyright">
+/*	=======================================<BR>
+	Copyright 1998 - 2014 - E Net Arch<BR>
+		www.ENetArch.net - 248-686-1407<BR>
+		ENetArch on AIM, Yahoo, and Skype<BR>
+<BR>
+	This program is distributed under the terms of the GNU <BR>
+	General Public License (or the Lesser GPL).<BR>
+	======================================= */
+</P> 
+
+ 
+ 
+ </BODY>
+</HTML>

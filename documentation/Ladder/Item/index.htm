@@ -1,0 +1,121 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+	<HEAD>
+<LINK rel="stylesheet" type="text/css" href="../../styles.css">
+</HEAD>
+<BODY>
+
+<P class="Title">Class :  Item</P>
+
+<p>
+	<a href="index.htm">Collection</a> | 
+	<a href="#Properties">Properties</a> | 
+	<a href="#Constants">Constants</a> | 
+	<a href="#UsageConcepts">Usage Concepts</a> | 
+	<a href="#Properties">Methods</a> | 
+	<a href="#Errors">Errors</a> | 
+	<a href="#Events">Events</a> | 
+	<a href="#Examples">Examples</a> | 
+	See Also
+</p>
+
+<P class="Header1">Heirarchy</P>
+<P>
+<a href="../index.htm">Ladder</a> <BR>
+<IMG src="../../images/t-t-r.gif"> Roots <BR>
+<IMG src="../../images\blank.gif">
+<IMG src="../../images\t-tb-r.gif"> <a href="Folders/Folder/index.htm">Folder</a><BR>
+<IMG src="../../images\blank.gif">
+<IMG src="../../images\tb.gif">
+<IMG src="../../images\t-tb-r.gif"> <a href="Folders/index.htm">Folders</a><BR>
+<IMG src="../../images\blank.gif">
+<IMG src="../../images\tb.gif">
+<IMG src="../../images\tb-r.gif"> <a href="Items/index.htm">Items</a><BR>
+<IMG src="../../images\blank.gif">
+<IMG src="../../images\tb.gif">
+<IMG src="../../images\tb.gif">
+<IMG src="../../images\t-t-r.gif"> <a href="Items/Item/index.htm">Item</a><BR>
+<IMG src="../../images\blank.gif">
+<IMG src="../../images\tb.gif">
+<IMG src="../../images\t-r.gif"> <a href="References/index.htm">References</a><BR>
+<IMG src="../../images\blank.gif">
+<IMG src="../../images\tb.gif">
+<IMG src="../../images\blank.gif">
+<IMG src="../../images\t-t-r.gif"> <a href="Items/Reference/index.htm">Reference</a><BR>
+<IMG src="../../images\blank.gif">
+<IMG src="../../images\t-r.gif"> <a href="Classes/index.htm">Classes</a><BR>
+<IMG src="../../images\blank.gif">
+<IMG src="../../images\blank.gif">
+<IMG src="../../images\t-t-r.gif"> <a href="Classes/Class/index.htm">Class</a><BR>
+<IMG src="../../images\blank.gif">
+<IMG src="../../images\blank.gif">
+<IMG src="../../images\blank.gif">
+<IMG src="../../images\t-tb-r.gif"> <a href="Classes/Class_Definition/index.htm">Class Defination</a><BR>
+<IMG src="../../images\blank.gif">
+<IMG src="../../images\blank.gif">
+<IMG src="../../images\blank.gif">
+<IMG src="../../images\t-r.gif"> <a href="Templates/index.htm">Templates</a><BR>
+<IMG src="../../images\blank.gif">
+<IMG src="../../images\blank.gif">
+<IMG src="../../images\blank.gif">
+<IMG src="../../images\blank.gif">
+<IMG src="../../images\t-t-r.gif"> <a href="Templates/Template/index.htm">Template</a>
+</P>
+
+<P id="Description" class="Header1">Description</P>
+<P>A Data Item element stores state data for objects.  Where Folders are containers, and References are
+pointers to folders, Data Item elements allow Ladder to store the state data of objects.  Data Item elements
+have two parts, the Element Link data and the objects state data. They are stored seperately in the mySQL
+server.  The purpose of this is to allow Ladder to organize the state data based on a heirarchial relationship and
+not be confined to one type of state data format.</P>
+
+<P id="Extends" class="Header1">Extends</P>
+<P><a href="../Properties/index.htm">Properties</a></P>
+
+<P id="Methods" class="Header1">Methods</P>
+<p>
+Public <A href="Create.htm">Create</A> ( Folder, szName, szDescription, nClass) : Boolean<BR> 
+Public <A href="Create.htm">Create2</A> ( Folder, szName, szDescription, nClass, TableName) : Boolean<BR> 
+<BR> 
+
+Public <A href="Delete.htm">Delete</A> ( [Folder | Item]) : Boolean<BR> 
+<BR> 
+
+Public <A href="getTableName.htm ">get TableName</A> () : String<BR> 
+<BR> 
+
+Public <A href="getStructure.htm ">get Structure</A> () : Array<BR> 
+<BR> 
+
+Public <A href="getData.htm">get Data</A> () : Array<BR> 
+Public <A href="getData.htm ">set Data</A> (Array)<BR> 
+<BR> 
+
+Public <A href="saveData.htm">save Data</A> () : Boolean<BR> 
+<BR> 
+
+Public <A href="getField.htm">get Field</A> ( szField ) : String<BR> 
+Public <A href="getField.htm ">set Field</A> (szField, String)<BR> 
+<BR> 
+
+Public <A href="Store.htm">Store</A> () : Boolean<BR> 
+<BR> 
+</p>
+
+<P id="Remarks" class="Header1">Remarks</P>
+
+ 
+<P class="copyright">
+/*	=======================================<BR>
+	Copyright 1998 - 2014 - E Net Arch<BR>
+		www.ENetArch.net - 248-686-1407<BR>
+		ENetArch on AIM, Yahoo, and Skype<BR>
+<BR>
+	This program is distributed under the terms of the GNU <BR>
+	General Public License (or the Lesser GPL).<BR>
+	======================================= */
+</P> 
+
+ 
+ </BODY>
+</HTML>

@@ -1,0 +1,64 @@
+<HTML>
+<HEAD>
+<TITLE></TITLE>
+<LINK rel="stylesheet" type="text/css" href="../../styles.css">
+</HEAD>
+<BODY>
+<P class="Title">Property : ID</P>
+
+<p>
+	<a href="index.htm">Collection</a> | 
+	<a href="#Syntax">Syntax</a> | 
+	<a href="#Description">Description</a> | 
+	<a href="#Values">Values</a> | 
+	<a href="#Returns">Returns</a> | 
+	<a href="#Remarks">Remarks</a> | 
+	<a href="#UsageConcepts">Usage Concepts</a> | 
+	<a href="#SeeAlso">See Also</a>
+</P>
+
+<P id="Syntax" class="Header1">Syntax</P></p>
+<P>Public ID : Long<BR>
+Friend ID = [Value]</P>
+
+<P id="Description" class="Header1">Description</P>
+<P>A read only value to non-Friend classes, that returns the ID assigned to the instance from the 
+container class.</P>
+
+<P id="Values" class="Header1">Values</P>
+<P>set ID assigns the instances it's ID.</P>
+
+<P id="Returns" class="Header1">Returns</P>
+<P>get ID returns the ID of the Instance, as assigned by 
+the container class</P>
+
+<P id="Remarks" class="Header1">Remarks</P>
+<p>Depending on the implemention of Ladder, this value may be set by the database engine
+being used or it may be set by the container class.  In either case, this value will be an auto
+incrementing sequential ID from 1 through infinity.</p>
+
+<P>The set ID is exposed only to the Container, only the container can change the ID of the 
+isntance. Should any other class be allowed to change this value, the engine would loose
+integrity and crash.
+</P>
+
+<P id="See Also" class="Header1">See Also</p>
+<P>
+	<a href="getGUID.htm">GUID</a> <BR>
+</P>
+
+
+<P class="copyright">
+/*	=======================================<BR>
+	Copyright 1998 - 2014 - E Net Arch<BR>
+		www.ENetArch.net - 248-686-1407<BR>
+		ENetArch on AIM, Yahoo, and Skype<BR>
+<BR>
+	This program is distributed under the terms of the GNU <BR>
+	General Public License (or the Lesser GPL).<BR>
+	======================================= */
+</P> 
+
+
+</BODY>
+</HTML>

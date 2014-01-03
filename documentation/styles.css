@@ -1,0 +1,24 @@
+	body { font : 1em arial; }
+.Title { font-size : 3em; }
+.Header1 { font-size : 2em; }
+.Header2 { font-weight : bold; }
+.copyright 
+{
+	font-size : .5em;
+	text-align : center;
+}
+.float-bottom 
+{ 
+	float : bottom; 
+	position : fixed; 
+	width: 100%;
+	margin-right: auto;
+  margin-left: auto;
+  bottom: 0px;
+  background-color : #5588FF;
+}
+
+.codesSegment
+{
+	background-color : #55FFFF;
+}

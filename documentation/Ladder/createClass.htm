@@ -1,0 +1,62 @@
+<HTML>
+<HEAD>
+<TITLE></TITLE>
+<LINK rel="stylesheet" type="text/css" href="../styles.css">
+</HEAD>
+<BODY>
+<P class="Title">Method : Create_Class</P>
+
+<P>
+	<a href="#Syntax">Syntax</a> | 
+ <a href="#Description">Description</a> | 
+ <a href="#Parameters">Parameters</a> | 
+<a href="#Values">Values</a> | 
+<a href="#Returns">Returns</a> | 
+<a href="#Remarks">Remarks</a> | 
+ <a href="#Example">Example</a> | 
+  <a href="#SeeAlso">See Also</a> | 
+</p>
+
+<P id="Syntax" class="Header1">Syntax</P>
+<P>Public Create_Class ( szName, nBaseType, ofClass, bAcceptsAll, szStr ) : Folder</P> 
+ 
+
+<P id="Description" class="Header1">Description</P>
+<P>Adds a new class to Ladder, and stores the information in the Root Classes Folder.</P>
+
+<P id="Parameters" class="Header1">Parameters</P>
+<P>[ szName ] - The name of the folder to be created.</P>
+<P>[ szDescription ] - The description of the Class (not implemented yet!) </P>
+<P>[ nBaseType ] - the base type - folder, data item, reference</P>
+<P>[ ofClass ] - null, or a Class ID.  ofClass is used to super class classes in Ladder</P>
+<P>[ bAcceptsAll ] - True or False, if this is a Folder base type class, then this determines 
+if it should accept any class or only those listed in a Templates Folder under this class 
+(not implemented in this version).</P>
+<P>[ szStr ] - null, or the structure for a Data Item. </P>
+
+<P id="Returns" class="Header1">Returns</P>
+<P>[ Folder ] - this folder contains the information for the class loaded.</P>
+
+<P id="Remarks" class="Header1">Remarks</P>
+<P>[ Templating] In the future classes will provide additional features that allow folders to stipulate what 
+elements can be placed in them.  This mechanism exist in the Visual Basic libraries of Ladder,
+but is costly to execute as a scripted language.</P>
+
+<P>[ofClass] this feature is not fully implemented in Ladder at this time.  Full implementation would
+enforce which classes can interact with their super and subbordinate instance data.  In addition, Ladder
+Visual Basic has the option to provide instance overloading, so that when a class is retrieved, the
+class type sought after would also pull parent class types of a different class ID.</P>
+
+<P class="copyright">
+/*	=======================================<BR>
+	Copyright 1998 - 2014 - E Net Arch<BR>
+		www.ENetArch.net - 248-686-1407<BR>
+		ENetArch on AIM, Yahoo, and Skype<BR>
+<BR>
+	This program is distributed under the terms of the GNU <BR>
+	General Public License (or the Lesser GPL).<BR>
+	======================================= */
+</P> 
+
+</BODY>
+</HTML>

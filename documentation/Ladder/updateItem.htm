@@ -1,0 +1,67 @@
+<HTML>
+<HEAD>
+<TITLE></TITLE>
+<LINK rel="stylesheet" type="text/css" href="../styles.css">
+</HEAD>
+<BODY>
+<P class="Title">Method : Update_Item</P>
+
+<P>
+	<a href="#Syntax">Syntax</a> | 
+	<a href="#Description">Description</a> | 
+	<a href="#Parameters">Parameters</a> | 
+	<a href="#Values">Values</a> | 
+	<a href="#Returns">Returns</a> | 
+	<a href="#Remarks">Remarks</a> | 
+	<a href="#Example">Example</a> | 
+	<a href="#SeeAlso">See Also</a> | 
+</p>
+
+<P id="Syntax" class="Header1">Syntax</P>
+<P>Private Update_Item  ( thsState, thsData ) : Boolean</P>
+
+<P id="Description" class="Header1">Description</P>
+<P>Provides Ladder Client (not yet available) with a quick way to update Data Items.</P>
+
+<P id="Parameters" class="Header1">Parameters</P>
+<P>[ thsState ] - this is an associative array contain the Link Instance data.</P>
+<P>[ thsData ] - this is an associative array contain the object's Instance data.</P>
+
+<P id="Values" class="Header1">Values</P>
+
+<P id="Returns" class="Header1">Returns</P>
+<P>[ Boolean ] - If the update process was successful.</P>
+
+<P class="Header1">Errors</P>
+<P>Table Doesn't Exist - the table that the 
+data is stored in, doesn't exist. The installation process may not have 
+succeeded in creating the table.</P>
+<P>Invalid Structure - A field within the 
+structure, generated as a reflection of the table, does not contain a field 
+needed by the instance to store it's information.</P>
+<P>Data Type MisMatch - a field that is contained 
+within the structure doesn't match the data type that the Instance 
+needs.</P>
+
+<P id="Remarks" class="Header1">Remarks</P>
+<P>Update handles the interaction between the instance and the storage medium. </P>
+
+<P id="SeeAlso" class="Header1">See Also</P>
+<p>
+	<a href="Update_Item.htm">Update_Item</a><BR>
+	<a href="Update_Link.htm">Update_Link</a><BR>
+</p>
+
+<P class="copyright">
+/*	=======================================<BR>
+	Copyright 1998 - 2014 - E Net Arch<BR>
+		www.ENetArch.net - 248-686-1407<BR>
+		ENetArch on AIM, Yahoo, and Skype<BR>
+<BR>
+	This program is distributed under the terms of the GNU <BR>
+	General Public License (or the Lesser GPL).<BR>
+	======================================= */
+</P> 
+
+</BODY>
+</HTML>

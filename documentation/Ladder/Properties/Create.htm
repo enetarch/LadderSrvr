@@ -1,0 +1,128 @@
+<HTML>
+<HEAD>
+<TITLE></TITLE>
+<LINK rel="stylesheet" type="text/css" href="../../styles.css">
+</HEAD>
+<BODY>
+<P class="Title">Method : Create</P>
+
+<P>
+	<a href="#Syntax">Syntax</a> | 
+	<a href="#Description">Description</a> | 
+	<a href="#Parameters">Parameters</a> | 
+	<a href="#Rules">Rules</a> | 
+	<a href="#Returns">Returns</a> | 
+	<a href="#Remarks">Remarks</a> | 
+	<a href="#Example">Example</a> | 
+	<a href="#SeeAlso">See Also</a> 
+</P>
+
+<P id="Syntax" class="Header1">Syntax</P>
+<P>Public Create (szName, szDescription, nParent = 0, nClass, nBaseType, nLeaf=0) : Boolean</P>
+
+<P id="Description" class="Header1">Description</P>
+<P>Create initializes a Link Instance. The data for the Link Instance is stored in Properties. </P>
+
+<P id="Parameters" class="Header1">Parameters</P>
+<P>	szName - is the name assigned to the Link Instance </P>
+<P>	szDescription - is a description provided that describes the Link Instance or it's data </P>
+<P>	nParent - is a reference to the parent that the link is associated with.  Zero (0) means that the link is a root. </P>
+<P>	nClass - is a reference to the type of class that the data represents.  This should point to a class in the Ladder Tree </P>
+<P>	nBaseType - is one of 4 types that a Link Instance can take: Root, Folder, Data Item, and Reference </P>
+<P>	nLeaf - This is a pointer to the instance of the Item's data in it's respective table</P>
+
+<P id="Rules" class="Header1">Rules</P>
+<P>Every Link Instance must have a name</P>
+<P>Every Link Instance must have a class</P>
+<P>A root folder must never have a parent.</P>
+<P>A Folder, Data Item, or Reference must have a parent.</P>
+<P>A Folder will always set the leaf to zero (0).</P>
+<P>Only a Data Item and a Reference can set Leaf to non-Zero.</P>
+<P></P>
+
+<P id="Returns" class="Header1">Returns</P>
+<P>[ Boolean ] - There are several rules associated with creating a Link Instance, if the rules are 
+followed, TRUE is returned.  Else, FALSE. </P>
+
+<P id="Remarks" class="Header1">Remarks</P>
+<P></P>
+
+<P id="Example" class="Header1">Example</P>
+<P>
+A good example of creating Link Instances in Ladder is to review the code for Creating a Class in
+Ladder.  In the create_Class function, you can see Folder and Data Item Link Instances being constructed.
+<BR>
+
+<blockquote>
+<pre class="codesSegment">
+Function create_Class ($thsName, $nBaseType, $ofClass, $bAcceptsAll, $szStr="")
+{
+	Global $gblLadder;
+	$objClasses = $this->getClasses();
+
+	$szTableName = $thsName;
+	
+	if ($nBaseType == ENetArch_Ladder_Globals::cisItem())
+		if ($ofClass == 0)
+		{ $this->CreateTable ($thsName, $szStr); }
+		else
+		{
+			$clsOfClass = $gblLadder->getItem ($ofClass);
+			$defOfClass = $clsOfClass->getItem 
+				("", ENetArch_Ladder_Globals::cClass_Ladder_Defination());
+			$szTableName = $defOfClass->Field ("szTable");
+		}
+
+	$aryClasses = Array (1=>ENetArch_Ladder_Globals::cClass_Ladder_Class());
+	if (! $objClasses->Exists ($thsName, $aryClasses))
+	{
+		$objClass = $objClasses->Create_Folder
+			($thsName, "Class", ENetArch_Ladder_Globals::cClass_Ladder_Class());
+		$objClass->Store();
+
+		$objDef = $objClass->Create_Item2 
+			(
+				$thsName, "Defination", 
+				ENetArch_Ladder_Globals::cClass_Ladder_Defination(), 
+				"Ladder_Defination"
+			);
+		$objDef->setField ("nClassID", $objClass->ID());
+		$objDef->setField ("nBaseType", $nBaseType);
+		$objDef->setField ("szTable", $szTableName);
+		$objDef->setField ("ofClass", $ofClass);
+		$objDef->setField ("bAcceptsAll", $bAcceptsAll);
+		$objDef->Store();
+
+		return ($objClass);
+	}
+
+	return (false);
+}
+</pre>
+</blockquote>
+</P>
+
+<P id="See Also" class="Header1">See Also</p>
+<P>
+	<a href="Syntax">Create Class</a> | 
+	<a href="Syntax">Create Root</a> | 
+	
+	<a href="Syntax">Create Folder</a> | 
+	<a href="Syntax">Create Item</a> | 
+	<a href="Syntax">Create Reference</a> | 
+</P>
+
+<P class="copyright">
+/*	=======================================<BR>
+	Copyright 1998 - 2014 - E Net Arch<BR>
+		www.ENetArch.net - 248-686-1407<BR>
+		ENetArch on AIM, Yahoo, and Skype<BR>
+<BR>
+	This program is distributed under the terms of the GNU <BR>
+	General Public License (or the Lesser GPL).<BR>
+	======================================= */
+</P> 
+
+
+</BODY>
+</HTML>
