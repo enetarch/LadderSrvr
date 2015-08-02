@@ -1,0 +1,33 @@
+{
+	"WHERE" :
+	[
+		// CONTAINS
+		["a", "CONTAINS", "b"],
+
+		// DOES NOT CONTAIN
+		["a", "!CONTAINS", "b"],
+		
+		// BETWEEN
+		[
+			[ "a.dTarget", ">=", "_____"],
+			"AND",
+			[ "a.dTarget", "<=", "_____"],
+		]
+		
+		// COMPARISON
+		[ "a.dTarget", ">=", "_____"],
+		
+		// LIKE
+		[ "a.szMemo", "LIKE", "_string_"],
+		
+		// NOT LIKE
+		[ "a.szMemo", "!LIKE", "_string_"],
+		
+		// SET TEST
+		[ "a.szTaskType", "IN", [ "DO", "GET", ...] ]
+		[ "a.szTaskType", "SELECT", [ SELECT STATEMENT ] ]
+		
+		// NULL TEST
+		[ "a.szMemo", "IS", "NULL"],
+	]
+}

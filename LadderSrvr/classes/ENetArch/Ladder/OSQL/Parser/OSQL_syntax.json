@@ -1,0 +1,446 @@
+{
+	"GPL Lic": 
+	"
+/*	=======================================
+	Copyright 1998 .. 2015 - E Net Arch
+		www.ENetArch.net - 248-686-1407
+		ENetArch on AIM, Yahoo, and Skype
+
+	This program is distributed under the terms of the GNU 
+	General Public License (or the Lesser GPL).
+	======================================= */
+	",
+	
+	"error" : { "error" : [ "you missed something!" ] },
+	
+	"error_root_switch" : { "error" : [ "expected SELECT, INSERT, DELETE, UPDATE, CREATE, ALTER, DROP, MOVE, COPY, DUPE" ] },
+	"error_expected_AND" : { "error" : [ "expected AND" ] },
+	"error_not_test" : { "error" : [ "expected BETWEEN, IN, LIKE" ] },
+	"error_filter_test" : { "error" : [ "expected DOES, CONTAINS, =, <>, <, <=, >=,>,NOT, BETWEEN, LIKE, IS, IN" ] },
+	"error_get_using_switch" : { "error" : [ "expected CLASS or CLASSES" ] },
+	"error_get_using" : { "error" : [ "expected USING" ] },
+	"error_select_from" : { "error" : [ "expected FROM" ] },
+	"error_select_required" : { "error" : [ "expected INSTANCES, FIELDS, RESULTS" ] },
+	"error_select_optionals" : { "error" : [ "expected WHERE, ORDER, DEPTH" ] },
+	"error_order_by" : { "error" : [ "expected BY" ] },
+	"error_dot_test" : { "error" : [ "expected a PERIOD ( . ) to follow CLASSNAME or ALIAS" ] },
+	"error_contains" : { "error" : [ "expected DOES or CONTAINS" ] },
+	"error_does_not_contain" : { "error" : [ "expected DOES NOT CONTAIN" ] },
+	
+	"error_length" : { "error" : [ "expected ( value )" ] },
+	"error_insert_into" : { "error" : [ "expected INTO" ] },
+	"error_move_to" : { "error" : [ "expected TO" ] },
+	"error_move_from" : { "error" : [ "expected FROM" ] },
+	"error_expected_equals" : { "error" : [ "expected the equals sign (=)" ] },
+
+	"error_create_switch" : { "error" : [ "expected CLASS, FOLDER, or SUBCLASS" ] },
+	"error_drop_class" : { "error" : [ "expected CLASS, FOLDER, or SUBCLASS" ] },
+	"error_update_swtich" : { "error" : [ "expected STRUCTURE" ] },
+	"error_alter_swtich" : { "error" : [ "expected ADD, DELETE, or UPDATE" ] },
+
+	"error_update_set" : { "error" : [ "expected the word SET" ] },
+	"error_class_of" : { "error" : [ "expected OF classname" ] },
+	"error_newfields" : { "error" : [ "expected parenthises around field descriptors ( fieldname fieldtype, ... )" ] },
+	"error_fieldtypes" : { "error" : [ "expected a fieldtype of NUMBER, MEMO, STRING, or DATETIME" ] },
+	
+	"error_structure_class" : { "error" : [ "expected STRUCTURE FOR CLASS" ] },
+	"error_structure_for" : { "error" : [ "expected STRUCTURE FOR" ] },
+	"error_structure" : { "error" : [ "expected STRUCTURE" ] },
+	
+	
+	"param" : { "param" : [] },
+	
+	"getIdentifier" : { "getIdentifier" : [], "error" : [ "expected IDENTIFIER" ], "comment" : "param.type = TokenCodes::tcIDENTIFER" },
+	"getNumber" : { "getNumber" : [], "error" : [ "expected NUMBER" ], "comment" : "param.type = TokenCodes::tcNUMBER" },
+	"getString" : { "getString" : [], "error" : [ "expected STRING" ], "comment" : "param.type = TokenCodes::tcSTRING" },
+	"getValue" : { "getValue" : [], "error" : [ "expected NUMBER or STRING" ], "comment" : "param.type = TokenCodes::tcNUMBER or TokenCodes::tcSTRING" },
+
+	
+	"alias_name" : { "do": [ "getIdentifier" ] },
+	"class_name_alias" : { "if" : [ ["[", "alias_name", "]"] ] },
+	"class_name" :	{ "do" : [ "getIdentifier", "class_name_alias" ] },
+	"class_names" : { "until" : [ "class_name", "," ] },
+
+
+	"dot_test" : { "if" : [ [ ".", "getIdentifier"] ] },
+	"dot_test_required" : { "if" : [ [ ".", "getIdentifier"], "error_dot_test" ] },
+
+	"field_name" : 
+	{ 
+		"do": [ "class_name", "dot_test" ], 
+		"comment" : "[class][alias].field" 
+	},
+	
+	"value_or_field" : { "either": [ "getValue", "field_name" ] },
+	
+	"class_field_name" : { "do": [ "class_name", "dot_test_required" ] },
+	"class_field_names" : { "until" : [ "class_field_name", "," ] },
+	
+	
+	"value" : { "do" : [ "getValue" ] },
+	"values" : { "until" : [ "value", "," ] },
+	"value_list" : { "if" : [ [ "(", "values", ")" ] ] },
+	"values_list" : { "until" : [ "value_list", "," ] },
+
+	
+	"function_prototype" : { "if" : [ [ "(", "expression", ")" ] ] },
+	
+	"base_functions" : { "if" : [ [ ["AVG", "MAX", "MIN", "SUM", "COUNT"], "function_prototype" ], "value_or_field" ] },
+	"base_functions_old" : { "if" : [ [ ["AVG", "MAX", "MIN", "SUM", "COUNT"], "function_prototype" ], "class_field_name" ] },
+	
+	"all_functions" : { "if" : [ [ "ALL", "getIdentifier" ], "base_functions" ] },
+	
+	"distinct_functions" : { "if" : [ [ "DISTINCT", "getIdentifier" ], "all_functions" ] },
+	
+
+
+	"function_call" : { "do" : [ "distinct_functions" ] }, 
+	
+	"parenthises" : { "if" : [ [ "(", "expression", ")" ], "function_call" ] },
+
+	"multiplication" : { "while" : [ [ "*", "//" ], "parenthises" ] },
+
+	"addition" : { "while" : [ [ "+", "-" ], "multiplication" ] },
+
+	"expression" : { "do" : [ "addition" ] },
+	
+	"expression_list" : { "until" : [ "expression", "," ] },
+	
+	
+
+	"comparison_test" : { "if" : [ [ [ "ALL", "ANY", "SOME" ], "quantified_test" ], "expression" ] },
+
+	"quantified_test" : { "do" : [ "select_clause" ] },
+
+	"between_test_and" : { "if" : [ [ "AND", "expression" ], "error_expected_AND" ] },
+	
+	"between_test" : { "do" : [ "expression", "between_test_and" ] },
+
+	"like_test" : { "do" : [ "expression" ] },
+
+	"null_test" : { "if" : [ [ "NULL" ] ] },
+	
+	"not_null_test" : { "if" : [ [ "NOT", "null_test" ], "null_test" ] },
+
+	"set_test" : { "if" : [ [ "SELECT", "select_clause" ], "value_list" ] },
+	
+	"not_test" : 
+	{
+		"switch" :
+		[
+			[ "BETWEEN", "between_test" ],
+			[ "LIKE", "like_test" ],
+			[ "IN", "set_test" ],
+			
+			[ "error_not_test" ]
+		]
+	},
+		
+	"filter_test" :
+	{
+		"switch" :
+		[
+			[ [ "=", "<>", "<", "<=", ">=",">" ], "comparison_test" ],
+
+			[ "NOT", "not_test" ],
+			[ "BETWEEN", "between_test" ],
+			[ "LIKE", "like_test" ],
+			[ "IS", "not_null_test" ],
+			[ "IN", "set_test" ],
+			
+			[ "error_filter_test" ]
+		]
+	},
+
+
+
+	"contain_test" : { "if" : [ [ "CONTAIN", "class_name" ], "error_does_not_contain" ] },
+	
+	"contain_not" : { "if" : [ [ "NOT", "contain_test" ], "error_does_not_contain" ] },
+
+	"contains_test" : 
+	{ 
+		"switch" : 
+		[ 
+			[ [ "CONTAINS" ], "class_name" ], 
+			[ [ "DOES" ], "contain_not" ], 
+			[ "error_contains" ]
+		] 
+	},
+	
+	"filter_contains_left_class" : { "do" : [ "class_name", "contains_test" ] },
+	
+	
+	
+	"filter_left_param" : { "do" : [ "expression", "filter_test" ] },
+
+	"filter_1st_param" : 
+	{ 
+		"either" : 
+		[ 
+			"filter_contains_left_class", 
+			"filter_left_param",
+			
+			"error_filter_test"
+		] 
+	},
+
+	"filter_exists" : { "if" : [ [ "EXISTS", "select_clause" ], "filter_1st_param" ] },
+
+	"filter" : 
+	{
+		"switch" : 
+		[ 
+			[ "NOT", "filter_exists" ], 
+			[ "(", "filters", ")" ],
+			[ "filter_exists" ]
+		]
+	},
+
+	"filters" : { "while" : [ [ "AND", "OR" ], "filter" ] },
+	
+	"where_clause" : { "do" : [ "filters" ] },
+
+	"where_clause_if" : { "if" : [ [ "WHERE", "where_clause" ] ] },
+
+
+	"order_by_direction" : { "if" : [ [ ["ASC", "DESC"], "got_it" ] ] },
+	
+	"order_by_field" : { "do" : [ "class_field_name", "order_by_direction" ] },
+	
+	"order_by" : { "until" : [ "order_by_field", "," ] },
+	
+	"order_clause" : { "if" : [ [ "BY", "order_by" ], "error_order_by" ] },
+	
+	
+	"get_using_class_name" :	{ "do" : [ "class_name" ] },
+	
+	"get_using_class_names" : { "until" : [ "get_using_class_name", "," ] },
+	
+	"get_using_classes" : { "if" : [ ["*", "" ], "get_using_class_names" ] },
+
+	"get_using_switch" : 
+	{ 
+		"switch" : 
+		[ 
+			["CLASS", "get_using_class_name" ],
+			["CLASSES", "get_using_classes" ],
+			
+			[ "error_get_using_switch" ]
+		]
+	},
+
+	"get_using" : { "if" : [ ["USING", "get_using_switch"], "error_get_using"] },
+	
+
+	"get_path_alias" : { "if" : [ ["[", "alias_name", "]"] ] },
+	
+	"get_path" : { "do" : [ "getString", "get_path_alias" ] },
+	
+	
+	"select_from" : { "if" : [ ["FROM", "get_path"], "error_select_from" ] },
+	
+	
+	"groupby_clause" : { "if" : [ ["BY", "class_field_names"], "error_group_by" ] },
+	
+	"having_clause" : { "do" : [ "class_field_names"] },
+	
+	
+	"field_optionals" :
+	{
+		"optional" : 
+		[
+			[ "GROUP", "groupby_clause" ],
+			[ "HAVING", "having_clause" ]
+			
+		]
+	},
+
+	"select_optionals" :
+	{
+		"optional" : 
+		[
+			[ "WHERE", "where_clause" ],
+			[ "ORDER", "order_clause" ],
+			[ "DEPTH", "depth_clause" ]
+		]
+	},
+
+	"select_required" :
+	{ 
+		"do" : 
+		[ 
+			"get_using", 
+			"select_from", 
+			"select_optionals" 
+		] 
+	},
+
+	"select_fields" : { "do" : [ "class_field_names", "select_required" ] },
+	
+	"select_instances" : { "do" : [ "select_required" ] },
+	
+	"structure_class" : { "do" : [ "getIdentifier" ] },
+	"structure_for" : { "if" : [ ["class", "structure_class"], "error_structure_expected_class" ] },
+	"structure" : { "if" : [ ["FOR", "structure_for"], "error_structure_expected_for" ] },
+
+	"select_clause" :
+	{
+		"switch" : 
+		[	
+			[ "INSTANCES", "select_instances" ],
+			[ "FIELDS", "select_fields" ],
+			[ "STRUCTURE", "structure" ],
+			
+			[ "error_select_required" ]
+		]
+	},
+	
+	"got_it" : { "do" : [] },
+
+	"length" : { "if" : [ [ "(", "getNumber", ")" ], "error_length" ] },
+	"fieldtype" : 
+	{ 
+		"switch" : 
+		[
+			[ "BOOLEAN", "got_it" ], 
+			[ "INTEGER", "got_it" ], 
+			[ "REAL", "got_it" ], 
+			[ "NUMBER", "got_it" ], 
+			[ "STRING", "length" ], 
+			[ "MEMO", "got_it" ], 
+			[ "DATETIME", "got_it" ],
+			
+			[ "error_fieldtypes" ]
+		] 
+	}, 
+	
+	"fieldname" : { "do" : [ "getIdentifier" ] }, 
+	"newField" : { "do" : [ "fieldname", "fieldtype" ] }, 
+	"newFields" : { "until" : [ "newField", "," ] },
+
+	"alter_add_str" : { "if" : [ [ "(", "newField", ")" ], "" ] },
+	"alter_delete_str" : { "do" : [ "getIdentifier" ] },
+	"alter_update_str" : { "if" : [ [ "(", "newField", ")" ], "" ] },
+
+	"alter_add" : { "switch" : [ ["STRUCTURE", "alter_add_str"], [ "error_structure" ] ] },
+	"alter_delete" : { "switch" : [ ["STRUCTURE", "alter_delete_str"], [ "error_structure" ] ] },
+	"alter_update" : { "switch" : [ ["STRUCTURE", "alter_update_str"], [ "error_structure" ] ] },
+	
+	"alter_clause_switch" : 
+	{ 
+		"switch" :
+		[
+			[ "ADD", "alter_add" ],
+			[ "DELETE", "alter_delete" ],
+			[ "UPDATE", "alter_update" ],
+			
+			[ "error_alter_swtich" ]
+		]
+	},
+	
+	"alter_get_classname" : { "do" : [ "class_name" ] },
+	"alter_clause_class" : { "if" : [ [ "CLASS", "alter_get_classname" ], ""] },
+	
+	"alter_clause" : 
+	{
+		"do" : 
+		[ 
+			"alter_clause_class", 
+			"alter_clause_switch" 
+		]
+	},
+	
+
+	"create_class_fields" :  { "if" : [ [ "(", "newFields", ")" ], "error_newfields" ] },
+	"create_class" :  { "do" : [ "class_name", "create_class_fields" ] },
+	
+	"create_root" : { "optional" : [ [ "ISROOT", "got_it" ] ] },
+	"create_folder" : { "do" : [ "class_name", "create_root" ] },
+	
+	"class_of_class" : { "if" : [ [ "CLASS", "class_name"], "error_class_of" ] }, 
+	"class_of" : { "if" : [ [ "OF", "class_of_class"] ] }, 
+	"create_subclass" : { "do" : [ "class_name", "class_of" ] },
+	
+	"create_clause" : 
+	{
+		"switch" : 
+		[
+			[ "CLASS", "create_class" ],
+			[ "FOLDER", "create_folder" ],
+			[ "SUBCLASS", "create_subclass" ],
+			
+			[ "error_create_switch" ]
+		]
+	},
+	
+	
+	"drop_class" : { "if" : [ ["CLASS", "class_name"], "error_drop_class" ] },
+	"drop_clause" : { "do" : [ "drop_class"] },
+	
+
+	"delete_element" : { "do" : [ "get_path" ] },
+	"delete_elements" : 
+	{ 
+		"do" : 
+		[ 
+			"get_path", 
+			"get_using", 
+			"where_clause_if"
+		] 
+	},
+	"delete_from" : { "if" : [ [ "FROM", "delete_elements"] , "delete_element"] },
+	"delete_clause" : { "do" : [ "delete_from" ] }, 
+	
+	
+	"insert_values" : { "if" : [ [ "VALUES", "values_list"] , "error_insert_values"] },
+	"insert_fields" : { "do" : [ "value_list"] },
+	"insert_into" : { "if" : [ [ "INTO", "get_path"] , "error_insert_into"] },
+	"insert_clause" : { "do" : [ "insert_into", "get_using", "insert_fields", "insert_values" ]  }, 
+
+
+	"move_to" : { "if" : [ [ "TO", "get_path"] , "error_move_to"] }, 
+	"move_from" : { "if" : [ [ "FROM", "get_path"] , "error_move_from"] },
+	"move_clause" : { "do" : [ "move_from", "move_to" ] }, 
+	
+	
+	"if_equals" : { "if" : [ ["=", "comparison_test" ], "error_expected_equals" ] },
+	"set_field" : { "do" : [ "value_or_field", "if_equals" ] },
+	"set_properties" : { "until" : [ "set_field", "," ] },
+	
+	"update_set" : { "if" : [ [ "SET", "set_properties"] , "error_update_set"] }, 
+	
+	"update_element" : { "do" : [ "get_path", "update_set" ] },
+	"update_elements" : 
+	{ 
+		"do" : 
+		[ 
+			"get_path", 
+			"get_using", 
+			"update_set", 
+			"where_clause_if" 
+		] 
+	},
+
+	"update_in" : { "if" : [ [ "IN", "update_elements"] , "update_element"] }, 
+	"update_clause" : { "do" : [ "update_in"] }, 
+	
+	"root" : 
+	{
+		"switch" : 
+		[
+			[ "SELECT", "select_clause" ],
+			[ "UPDATE", "update_clause" ],
+			[ "DELETE", "delete_clause" ],
+			[ "INSERT", "insert_clause" ],
+			
+			[ "CREATE", "create_clause" ],
+			[ "ALTER", "alter_clause" ],
+			[ "DROP", "drop_clause" ],
+
+			[ [ "MOVE", "COPY", "DUPE" ], "move_clause" ],
+			
+			[ "error_root_switch" ]
+		]
+	}
+}

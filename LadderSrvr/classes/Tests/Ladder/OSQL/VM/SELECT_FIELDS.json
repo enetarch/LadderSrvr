@@ -1,0 +1,55 @@
+{
+	"SELECT" : 
+	{ 
+		"FIELDS" : 
+		[
+			{ "class" : "a", "field" : "dCreated" },
+			{ "class" : "a", "field" : "bComplete" },
+			{ "class" : "a", "field" : "szMemo" },
+		] 
+	},
+
+	"ALIAS" :
+	[
+		{ "alias" : "a", "class" : "Common_Todo" }, 
+		{ "alias" : "b", "class" : "Common_Todo2" }
+		{ "alias" : "c", "class" : "Common_Todos" }
+	],
+	
+	"USING" : 
+	[
+		{ "alias" : "a", "class" : "Common_Todo" }, 
+		{ "alias" : "b", "class" : "Common_Todo2" }
+	],
+
+	"FROM" : { "alias" :"c", "path" : "\\RootFolder\DayTimer\Todos" },
+
+	"WHERE" : 
+	[
+		[ 
+			{ "alias" : "", "class" : "c" }, 
+			"CONTAINS", 
+			{ "alias" : "", "class" : "a" } 
+		],
+		"AND",
+		[
+			[ 
+				{ "class" : "a", "field" : "dCreated" }, 
+				">=", 
+				{ "class" : "a", "field" : "dCreated" }, 
+			],
+			"AND",
+			[ 
+				{ "class" : "a", "field" : "dCreated" }, 
+				"<=", 
+				{ "class" : "a", "field" : "dCreated" }
+			]
+		]
+	],
+
+	"ORDERBY" : 
+	[
+		[ "ASC", { "class" : "a", "field" : "szTaskType" } ],
+		[ "ASC", { "class" : "a", "field" : "nPriority" } ]
+	]
+}

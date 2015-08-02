@@ -1,0 +1,1 @@
+http://localhost:8080/LadderSrvr/query.php?szOSQL=SELECT INSTANCES USING CLASS todo FROM '\daytimer\todos'
